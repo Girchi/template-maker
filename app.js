@@ -1,7 +1,6 @@
 import express, { response } from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import fetch from "node-fetch";
 import bodyParser from "body-parser";
 import multer from 'multer';
 

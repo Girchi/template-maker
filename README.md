@@ -1,15 +1,6 @@
-ბარათების გენერირება სერვერზე
+# Template Maker
 
-1. ბარათების სურათების გენერირება
+### Run the app:
 ```ruby
-node generate/cardtopng.js
-```
-
-2. დაგენერირებული სურათების პდფში ჩასმა
-```ruby
-node generate/generatepdf.js
-```
-3. პდფების ლოკაცია
-```ruby
-/cards-download
+node app.js
 ```
