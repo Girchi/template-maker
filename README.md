@@ -1,6 +1,6 @@
-Template Maker
+## Template Maker
 
-To run the app:
+# Run the app:
 ```ruby
 node app.js
 ```
