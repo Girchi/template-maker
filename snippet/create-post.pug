@@ -1,0 +1,40 @@
+doctype html
+include parts/links-in-header
+
+link(href='https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap' rel='stylesheet')
+link(rel='stylesheet' href='../assets/post/css/bootstrap.min.css')
+link(rel='stylesheet' href='../assets/post/css/style.css')
+link(rel='stylesheet' href='../assets/css/post.css')
+
+
+.content
+  .container
+    .row.align-items-stretch.justify-content-center.no-gutters
+      .col-md-7
+        .form.h-100.contact-wrap.p-5
+          h3.text-center შაბლონის შექმნა
+          form#contactForm.mb-5(action='http://127.0.0.1:3000/post' enctype="multipart/form-data" method='POST' name='contactForm')
+            .row
+              .col-md-6.form-group.mb-3
+                label.col-form-label ავტორი
+                input#name.form-control(for='author' type='text' name='name' placeholder='ავტორის სახელი')
+            .row.mb-5
+              .col-md-12.form-group.mb-3
+                label.col-form-label განცხადება
+                textarea#message.form-control(for='message' name='message' cols='30' rows='4' placeholder='დაწერე განცხადება')
+            .form-group
+                label(for='exampleFormControlFile1') სურათის ატვირთვა
+                input#exampleFormControlFile1.form-control-file(for='image' name='image' type='file' required)
+            .row.justify-content-center
+              .col-md-5.form-group.text-center
+                input.btn.btn-block.btn-primary.rounded-0.py-2.px-4(type='submit' value='შექმნა') 
+                span.submitting
+
+
+include parts/js_scripts
+script(src='../assets/post/js/jquery-3.3.1.min.js')
+script(src='../assets/post/js/popper.min.js')
+script(src='../assets/post/js/bootstrap.min.js')
+script(src='../assets/post/js/jquery.validate.min.js')
+script(src='../assets/post/js/main.js')
+script(src='../assets/post/js/create_post.js')

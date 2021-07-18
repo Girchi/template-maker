@@ -1,0 +1,24 @@
+{
+  "name": "legalize",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "cannabis lovers community",
+  "main": "qrcode.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jsqr": "^1.4.0",
+    "multer": "^1.4.2",
+    "node-fetch": "^2.6.1",
+    "node-font2base64": "^0.7.1",
+    "node-html-to-image": "^3.2.0",
+    "nodemon": "^2.0.12",
+    "pdf-lib": "^1.16.0",
+    "pug": "^3.0.2",
+    "qrcode": "^1.4.4"
+  }
+}

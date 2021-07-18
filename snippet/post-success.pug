@@ -1,0 +1,16 @@
+doctype html
+include parts/links-in-header
+link(rel="stylesheet", href="../assets/css/post.css")
+link(rel='stylesheet' href='../assets/post/css/bootstrap.min.css')
+link(rel='stylesheet' href='../assets/post/css/style.css')
+link(rel='stylesheet' href='../assets/css/post.css')
+
+
+a(href='/')
+    button.btn.btn-success#btn(type='button') უკან დაბრუნება
+.post-container
+    img.img(src=`${image}`)
+    p.text=data.message
+    p.author=data.name
+
+include parts/js_scripts
