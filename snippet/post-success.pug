@@ -9,7 +9,8 @@ a(href='/')
     button.btn.btn-success#btn(type='button') უკან დაბრუნება
 .post-container
     img.img(src=`${image}`)
-    p.text=data.message
-    p.author=data.name
+    div.text
+        p=data.message
+    div.author=data.name
 
 include parts/js_scripts

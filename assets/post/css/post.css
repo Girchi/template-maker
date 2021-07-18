@@ -1,42 +1,76 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url("//cdn.web-fonts.ge/fonts/bpg-nino-mtavruli/css/bpg-nino-mtavruli.min.css");
+
+body {
+  overflow: hidden;
+}
 
 .post-container {
-    margin-top: 150px;
-    margin-bottom: 100px;
-    text-align: center;
-    position: relative;
-    color: white;
+  width: 2048px;
+  height: 2048px;
+  transform-origin: top left;
+  margin: 50px 0;
+  left: 50%;
+  transform: scale(0.25) translateX(-50%);
+  font-family: "BPG Nino Mtavruli", sans-serif;
+
+  text-align: center;
+  position: relative;
+  color: white;
+  border: 50px solid #08a53f;
 }
 
 .content {
-    margin-top: -45px;
+  margin-top: -45px;
 }
 
 .img {
-    width: 350px;
-    height: 100%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border: 7px solid green;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .text {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Roboto', sans-serif;
+  width: 100%;
+  height: 90%;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.text p {
+  width: 1620px;
+  font-weight: bold;
+  font-size: 134px;
+
+  line-height: 154px;
 }
 
 .author {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-decoration: underline;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 76px;
+  line-height: 87px;
+}
+
+.author::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 10px;
+  width: 100%;
+  background-color: #08a53f;
+  border-radius: 21px;
 }
 
 #btn {
-    margin: 20px 0 0 20px;
+  margin: 20px 0 0 20px;
 }
