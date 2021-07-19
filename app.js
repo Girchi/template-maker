@@ -4,6 +4,7 @@ import { dirname } from "path";
 import bodyParser from "body-parser";
 import multer from 'multer';
 import nodeHtmlToImage from 'node-html-to-image'
+import fs from 'fs';
 
 
 const app = express();
@@ -20,7 +21,6 @@ const fileStorageEngine = multer.diskStorage({
 const upload = multer({storage: fileStorageEngine});
 const port = 3000;
 const hostname = "127.0.0.1";
-const hostname2 = "http://127.0.0.1:3000";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -28,21 +28,34 @@ const urlencodedParser = bodyParser.urlencoded({extended: false });
 app.set("view engine", "pug");
 
 app.use("/assets", express.static("assets"));
-app.use("/generate", express.static("generate"));
 
 app.get("/", (req, res) => {
     res.render(__dirname + "/snippet/create-post")
 });
 
+
 app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
   res.render(__dirname + "/snippet/post-success", {
     data: req.body, 
     image: `./assets/serverImages/${req.file.originalname}`,
-    generatedImage: "image.png"
+    generatedImage: " image.png"
   });
 
+  // Writing template's data to the JSON file for an API
+  let data = JSON.stringify({
+    author: req.body.name,
+    message: req.body.message,
+    img_path: `./assets/serverImages/${req.file.originalname}`,
+  });
+
+  fs.writeFile("templateProps.json", data, (err) => {
+    if (err) throw err;
+    console.log('Data has been written to the file');
+  });
+
+
   nodeHtmlToImage({
-    output: './image.png',
+    output: './assets/post/generatedTemplate/image.png',
     html: `
     <html>
     <style>
