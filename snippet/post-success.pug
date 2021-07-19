@@ -4,15 +4,14 @@ link(rel='stylesheet' href='../assets/post/css/bootstrap.min.css')
 link(rel='stylesheet' href='../assets/post/css/style.css')
 link(rel='stylesheet' href='../assets/post/css/post.css')
 
-
 a(href='/')
     button.btn.btn-success#btn(type='button') უკან დაბრუნება
+//- a(href=`${generatedImage}` download='')
+//-     button.btn.btn-warning#btn(type='button') გადმოწერა
 .post-container
     img.img(src=`${image}`)
     div.text
         p=data.message
     div.author=data.name
-
     
-
 include parts/js_scripts
