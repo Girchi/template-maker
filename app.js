@@ -20,7 +20,7 @@ const fileStorageEngine = multer.diskStorage({
 
 const upload = multer({storage: fileStorageEngine});
 const port = 3000;
-const hostname = "0 .0.0.0";
+const hostname = "0.0.0.0";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
