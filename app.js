@@ -20,7 +20,7 @@ const fileStorageEngine = multer.diskStorage({
 
 const upload = multer({storage: fileStorageEngine});
 const port = 3000;
-const hostname = "127.0.0.1";
+const hostname = "0.0.0.0";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -30,7 +30,7 @@ app.set("view engine", "pug");
 app.use("/assets", express.static("assets"));
 
 app.get("/", (req, res) => {
-    res.render(__dirname + "/snippet/create-post")
+  res.render(__dirname + "/snippet/create-post")
 });
 
 
