@@ -28,7 +28,7 @@ app.set("view engine", "pug");
 app.use("/assets", express.static("assets"));
 
 app.get("/", upload.single("image"), (req, res) => {
-  res.render(__dirname + "/snippet/create-post", {qs: req.query, image: `./assets/serverImages/image.png`})
+  res.render(__dirname + "/snippet/create-post", {qs: req.query, image: `./assets/serverImages/image.jpg`})
 });
 
 
