@@ -2,7 +2,9 @@ import express, { response } from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import multer from 'multer';
-import nodeHtmlToImage from 'node-html-to-image'
+import nodeHtmlToImage from 'node-html-to-image';
+import fs from 'fs';
+import request from 'request';
 
 
 const app = express();
@@ -26,7 +28,7 @@ app.set("view engine", "pug");
 app.use("/assets", express.static("assets"));
 
 app.get("/", upload.single("image"), (req, res) => {
-  res.render(__dirname + "/snippet/create-post", {qs: req.query, image: __dirname + req.query.image})
+  res.render(__dirname + "/snippet/create-post", {qs: req.query, image: `./assets/serverImages/image.png`})
 });
 
 
@@ -34,11 +36,29 @@ app.get("/post", upload.single("image"), (req,res) => {
   console.log(req.query);
   res.render(__dirname + '/snippet/post-success', {
     qs: req.query,
-    generatedImage: "./assets/post/generatedTemplate/image.png"
+    author: req.query.author,
+    message: req.query.message,
+    image: `./assets/serverImages/image.jpg`,
+    generatedImage: "./assets/post/generatedTemplate/image.jpg"
   });
 
+  async function download(url, path, callback) {
+    request.head(url, (err, res, body) => {
+      request(url)
+        .pipe(fs.createWriteStream(path))
+        .on('close', callback)
+    })
+  }
+  
+  const urlToDownloadFrom = 'https://www.befunky.com/images/prismic/b60244c7-087b-409a-961b-831999aa5085_llama.jpg?auto=webp&format=jpg&width=1920&height=1920&fit=bounds'
+  const pathForImage = './assets/serverImages/image.jpg'
+  
+  download(urlToDownloadFrom, pathForImage, () => {
+    console.log('Image upload done! path=./assets/serverImages')
+  })
+
   nodeHtmlToImage({
-    output: './assets/post/generatedTemplate/image.png',
+    output: './assets/post/generatedTemplate/image.jpg',
     html: `
     <html>
     <style>
@@ -142,9 +162,9 @@ app.get("/post", upload.single("image"), (req,res) => {
         <div class="post-container">
           <img src={{picture}} class="img">
           <div class="text">
-              <p>{{author}}</p>
+              <p>{{message}}</p>
           </div>
-          <div class="author">{{message}}</div>
+          <div class="author">{{author}}</div>
         </div>
       </body>
     </html>`,
@@ -152,7 +172,7 @@ app.get("/post", upload.single("image"), (req,res) => {
     content: {
       author: req.query.author,
       message: req.query.message,
-      picture: `http://127.0.0.1:3000/assets/serverImages/${req.query.image}`
+      picture: `http://127.0.0.1:3000/assets/serverImages/image.jpg`
     }
   }).then(() => console.log('The image was created successfully!'))
 });
