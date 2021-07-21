@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "jsqr": "^1.4.0",
+    "move-file": "^2.1.0",
     "multer": "^1.4.2",
     "node-fetch": "^2.6.1",
     "node-font2base64": "^0.7.1",

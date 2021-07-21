@@ -6,12 +6,12 @@ link(rel='stylesheet' href='../assets/post/css/post.css')
 
 a(href='/')
     button.btn.btn-success#btn(type='button') უკან დაბრუნება
-a(href='../assets/post/generatedTemplate/image.png' download='')
+a(href=generatedImage download='')
     button.btn.btn-warning#btn(type='button') გადმოწერა
 .post-container
-    img.img(src=`${image}`)
+    img.img(src=qs.image)
     div.text
-        p=data.message
-    div.author=data.name
+        p=qs.message 
+    div.author=qs.author
     
 include parts/js_scripts
