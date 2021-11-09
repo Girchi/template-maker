@@ -14,7 +14,6 @@ const fileStorageEngine = multer.diskStorage({
     cb(null, './assets/serverImages/')
   },
     filename(req, file, cb) {
-      console.log("MULTER", file);
       cb(null, `${file.originalname}`);
     }
   }
@@ -32,30 +31,23 @@ app.use("/assets", express.static("assets"));
 app.use("/generate", express.static("generate"));
 
 app.get("/", upload.single("image"), (req, res) => {
-  // res.render(__dirname + "/snippet/create-post");
   res.render(__dirname + "/snippet/create-post", {qs: req.query, image: `./assets/serverImages/image.jpg`})
 });
 
 
 app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
-  console.log("BODY BLIN", req.body);
   res.render(__dirname + '/snippet/post-success', {
     qs: req.body,
     author: req.body.author,
     message: req.body.message,
-    image: `./assets/serverImages/image.jpg`,
+    image: `./assets/serverImages/${req.file.originalname}`,
     generatedImage: "./assets/post/generatedTemplate/image.jpg"
   });
 
 
-  async function download(url, path, callback) {
-    request.head(url, (err, res, body) => {
-      request(url)
-        .pipe(fs.createWriteStream(path))
-        .on('close', callback)
-    })
-  }
-  
+  const image = fs.readFileSync(`./assets/serverImages/${req.file.originalname}`,);
+  const base64Image = new Buffer.from(image).toString('base64');
+  const dataURI = 'data:image/jpeg;base64,' + base64Image;
 
   nodeHtmlToImage({
     output: './assets/post/generatedTemplate/image.jpg',
@@ -170,9 +162,9 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
     </html>`,
 
     content: {
-      author: req.query.author,
-      message: req.query.message,
-      picture: `http://127.0.0.1:3000/assets/serverImages/image.jpg`
+      author: req.body.author,
+      message: req.body.message,
+      picture: dataURI,
     }
   }).then(() => console.log('The image was created successfully!'))
 });
