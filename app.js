@@ -92,11 +92,7 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
         left: 0;
         top: 0;
         right: 0;
-        bottom: 0;
-        /* background: url(../img/Rectangle\ 1.png) no-repeat center/cover, linear-gradient( */
-          /* 1deg */
-          /* , #000 0%, transparent 40%); */
-      
+        bottom: 0;      
         border: 40px solid #58ff76;
         z-index: 10;
         filter: blur(2px);
@@ -111,6 +107,7 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        position: relative;
       }
 
       .text {
@@ -118,7 +115,7 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
         height: 90%;
         position: absolute;
         left: 0;
-        top: -15px;
+        top: 0;
         display: flex;
         justify-content: center;
         align-items: flex-end;
@@ -129,7 +126,7 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
         font-family: "FiraGO-ExtraBold";
         width: 1565px;
         font-size: 100px;
-        line-height: 100px;
+        line-height: 81px;
         font-size: 60px;
         color: #c8c8c8;
         font-weight: 800;
@@ -151,6 +148,26 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
         font-weight: bold;
       }
 
+      .rectangle {
+        width: 370px;
+        height: 90px;
+        position: absolute;
+        left: 78%;
+        top: 4%;
+        background-color: #57ff75;
+      }
+      
+      .girchi-logo-rect {
+        position:absolute;
+        width: 13rem;
+        padding: 0;
+        margin: 0;
+        top:20%;
+        left: 20%;
+        right: 20%; 
+        bottom:20%
+      }
+
       #btn {
         margin: 20px 0 0 20px;
       }
@@ -163,6 +180,9 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
               <p>{{message}}</p>
           </div>
           <div class="author">{{author}}</div>
+          <div class='rectangle'>
+            <img class="girchi-logo-rect" src='http://localhost:3000/assets/post/img/girchi-logo.png'>
+          </div
         </div>
       </body>
     </html>`,

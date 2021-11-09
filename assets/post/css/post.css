@@ -15,7 +15,6 @@
   src: url("./fonts/FiraGO-ExtraBold.otf");
 }
 
-
 body {
   overflow: hidden;
 }
@@ -84,7 +83,7 @@ body {
   font-family: "FiraGO-ExtraBold";
   width: 1565px;
   font-size: 100px;
-  line-height: 100px;
+  line-height: 81px;
   font-size: 60px;
   color: #c8c8c8;
   font-weight: 800;
@@ -108,11 +107,22 @@ body {
 
 .rectangle {
   width: 370px;
-  height: 35px;
+  height: 90px;
   position: absolute;
-  left: 200px;
-  top: 200px;
+  left: 78%;
+  top: 4%;
   background-color: #57ff75;
+}
+
+.girchi-logo-rect {
+  position:absolute;
+  width: 13rem;
+  padding: 0;
+  margin: 0;
+  top:20%;
+  left: 20%;
+  right: 20%; 
+  bottom:20%
 }
 
 /* .author::after {
