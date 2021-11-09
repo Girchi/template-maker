@@ -3,12 +3,13 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import multer from 'multer';
 import bodyParser from "body-parser";
+import cors from 'cors';
 import nodeHtmlToImage from 'node-html-to-image';
 import fs from 'fs';
-import request from 'request';
 
 
 const app = express();
+app.use(cors());
 const fileStorageEngine = multer.diskStorage({
   destination(req, file, cb) {
     cb(null, './assets/serverImages/')
@@ -56,6 +57,16 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
     <style>
       @import url("//cdn.web-fonts.ge/fonts/bpg-nino-mtavruli/css/bpg-nino-mtavruli.min.css");
 
+      @font-face {
+        font-family: "FiraGO-Bold";
+        src: url("http://127.0.0.1:3000/assets/post/css/fonts/FiraGO-Bold.otf");
+      }
+      
+      @font-face {
+        font-family: "FiraGO-ExtraBold";
+        src: url("http://127.0.0.1:3000/assets/post/css/fonts/FiraGO-ExtraBold.otf");
+      }
+
       body {
         overflow: hidden;
         width: 2048px;
@@ -69,7 +80,6 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
         margin: 50px 0;
         left: 50%;
         transform: translateX(-50%);
-        font-family: "BPG Nino Mtavruli", sans-serif;
         text-align: center;
         position: relative;
         color: white;
@@ -83,9 +93,11 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
         top: 0;
         right: 0;
         bottom: 0;
-        background: url("http://127.0.0.1:3000/assets/post/img/post-bg.png") no-repeat center/cover,  linear-gradient(
-          1deg
-          , #000 0%, transparent 40%);
+        /* background: url(../img/Rectangle\ 1.png) no-repeat center/cover, linear-gradient( */
+          /* 1deg */
+          /* , #000 0%, transparent 40%); */
+      
+        border: 40px solid #58ff76;
         z-index: 10;
         filter: blur(2px);
         pointer-events: none;
@@ -106,43 +118,37 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
         height: 90%;
         position: absolute;
         left: 0;
-        top: 0;
+        top: -15px;
         display: flex;
         justify-content: center;
         align-items: flex-end;
         z-index: 100;
-
       }
 
       .text p {
+        font-family: "FiraGO-ExtraBold";
         width: 1565px;
-        font-weight: bold;
-        font-size: 90px;
-        line-height: 150px;
+        font-size: 100px;
+        line-height: 100px;
+        font-size: 60px;
+        color: #c8c8c8;
+        font-weight: 800;
+        text-align: center;
       }
 
       .author {
         position: absolute;
-        bottom: 35px;
+        bottom: 50px;
         left: 50%;
         transform: translate(-50%, -50%);
-
-        font-size: 76px;
-        line-height: 87px;
+        padding: 0 140px 0 140px;
+        font-family: "FiraGO-Bold";
+        line-height: 80px;
         z-index: 100;
-
-      }
-
-      .author::after {
-        content: "";
-        position: absolute;
-        bottom: -22px;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        height: 10px;
-        width: 100%;
-        background-color: #08a53f;
-        border-radius: 21px;
+        background-color: #73e778;
+        font-size: 45px;
+        color: #191919;
+        font-weight: bold;
       }
 
       #btn {

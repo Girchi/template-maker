@@ -1,5 +1,21 @@
 @import url("//cdn.web-fonts.ge/fonts/bpg-nino-mtavruli/css/bpg-nino-mtavruli.min.css");
 
+/* @font-face { */
+  /* font-family: "DejaVu Sans"; */
+  /* src: url("./fonts/bpg_dejavu_sans_[FONTS.GE]/bpg_dejavu_sans.otf"); */
+/* } */
+
+@font-face {
+  font-family: "FiraGO-Bold";
+  src: url("./fonts/FiraGO-Bold.otf");
+}
+
+@font-face {
+  font-family: "FiraGO-ExtraBold";
+  src: url("./fonts/FiraGO-ExtraBold.otf");
+}
+
+
 body {
   overflow: hidden;
 }
@@ -8,10 +24,10 @@ body {
   width: 2048px;
   height: 2048px;
   transform-origin: top left;
-  margin: 50px 0;
+  margin: 0 0;
   left: 50%;
   transform: scale(0.25) translateX(-50%);
-  font-family: "BPG Nino Mtavruli", sans-serif;
+  /* font-family: "DejaVu Sans"; */
 
   text-align: center;
   position: relative;
@@ -26,9 +42,11 @@ body {
   top: 0;
   right: 0;
   bottom: 0;
-  background: url(../img/post-bg.png) no-repeat center/cover, linear-gradient(
-    1deg
-    , #000 0%, transparent 40%);
+  /* background: url(../img/Rectangle\ 1.png) no-repeat center/cover, linear-gradient( */
+    /* 1deg */
+    /* , #000 0%, transparent 40%); */
+
+  border: 40px solid #58ff76;
   z-index: 10;
   filter: blur(2px);
   pointer-events: none;
@@ -55,7 +73,7 @@ body {
   height: 90%;
   position: absolute;
   left: 0;
-  top: 0;
+  top: -25px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -63,25 +81,41 @@ body {
 }
 
 .text p {
+  font-family: "FiraGO-ExtraBold";
   width: 1565px;
-  font-weight: bold;
-  font-size: 105px;
-  line-height: 150px;
+  font-size: 100px;
+  line-height: 100px;
+  font-size: 60px;
+  color: #c8c8c8;
+  font-weight: 800;
+  text-align: center;
 }
 
 .author {
   position: absolute;
-  bottom: 15px;
+  bottom: 50px;
   left: 50%;
   transform: translate(-50%, -50%);
-
-  font-size: 76px;
-  line-height: 87px;
+  padding: 0 140px 0 140px;
+  font-family: "FiraGO-Bold";
+  line-height: 80px;
   z-index: 100;
-
+  background-color: #73e778;
+  font-size: 45px;
+  color: #191919;
+  font-weight: bold;
 }
 
-.author::after {
+.rectangle {
+  width: 370px;
+  height: 35px;
+  position: absolute;
+  left: 200px;
+  top: 200px;
+  background-color: #57ff75;
+}
+
+/* .author::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -91,7 +125,7 @@ body {
   width: 100%;
   background-color: #08a53f;
   border-radius: 21px;
-}
+} */
 
 #btn {
   margin: 20px 0 0 20px;
