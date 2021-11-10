@@ -1,11 +1,11 @@
 {
-  "name": "legalize",
+  "name": "template-maker-app",
   "type": "module",
   "version": "1.0.0",
-  "description": "cannabis lovers community",
+  "description": "App creating templates with Girchi's frame and logo",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +13,6 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "jsqr": "^1.4.0",
     "move-file": "^2.1.0",
     "multer": "^1.4.2",
     "node-fetch": "^2.6.1",
@@ -21,8 +20,6 @@
     "node-html-to-image": "^3.2.0",
     "nodemon": "^2.0.12",
     "pdf-lib": "^1.16.0",
-    "pug": "^3.0.2",
-    "qrcode": "^1.4.4",
-    "request": "^2.88.2"
+    "pug": "^3.0.2"
   }
 }
