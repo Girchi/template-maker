@@ -2,6 +2,7 @@
 body {
   font-family: "Roboto", sans-serif;
   background-color: #efefef;
+  overflow-y: auto;
   line-height: 1.9;
   color: #8c8c8c;
   position: relative;
@@ -40,6 +41,11 @@ a:hover {
 
 .content {
   padding: 7rem 0;
+}
+
+.container {
+  margin-top: -50px;
+  padding-bottom: auto;
 }
 
 .heading {
