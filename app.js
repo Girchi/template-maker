@@ -11,6 +11,7 @@ import font2base64 from 'node-font2base64';
 
 const app = express();
 app.use(cors());
+
 const fileStorageEngine = multer.diskStorage({
   destination(req, file, cb) {
     cb(null, './assets/serverImages/')
@@ -22,8 +23,7 @@ const fileStorageEngine = multer.diskStorage({
 );
 
 const upload = multer({storage: fileStorageEngine});
-const port = 3000;
-const hostname = "127.0.0.1";
+const port = process.env.PORT || 3000;
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -205,6 +205,6 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
 });
 
 
-app.listen(port, hostname, () =>
-  console.log(`Server running at http://${hostname}:${port}/`)
+app.listen(port, () =>
+  console.log(`Server running at http://localhost:${port}/`)
 );
