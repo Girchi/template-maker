@@ -1,5 +1,5 @@
 node_modules/
 
-assets/post/generatedTemplate/
+assets/generatedTemplate/*
 
-assets/post/serverImages/
+assets/serverImages/*
