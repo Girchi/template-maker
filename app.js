@@ -37,26 +37,19 @@ app.get("/", upload.single("image"), (req, res) => {
 });
 
 
-app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
-  res.render(__dirname + '/snippet/post-success', {
-    qs: req.body,
-    author: req.body.author,
-    message: req.body.message,
-    image: `./assets/serverImages/${req.file.originalname}`,
-    generatedImage: "./assets/generatedTemplate/image.jpg"
-  });
-
-
-  // DataURI to read uploaded image
-  const image = fs.readFileSync(`./assets/serverImages/${req.file.originalname}`,);
-  const base64Image = new Buffer.from(image).toString('base64');
-  const dataURI = 'data:image/jpeg;base64,' + base64Image;
+app.post("/post", [urlencodedParser, upload.single("image")], async (req, res) => {
+  // create DataURI to read the uploaded image
+  const dataURI = (path) => {
+    const image = fs.readFileSync(path,);
+    const base64Image = new Buffer.from(image).toString('base64');
+    return `data:image/jpeg;base64,${base64Image}`;
+  }
   
   // base64 urls for fonts
   const FiraGo_Bold_Font = font2base64.encodeToDataUrlSync('./assets/css/fonts/FiraGO-Bold.otf');
   const FiraGo_ExtraBold_Font = font2base64.encodeToDataUrlSync('./assets/css/fonts/FiraGO-ExtraBold.otf');
 
-  nodeHtmlToImage({
+  await nodeHtmlToImage({
     output: './assets/generatedTemplate/image.jpg',
     html: `
     <html>
@@ -182,7 +175,6 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
       #btn {
         margin: 20px 0 0 20px;
       }
-      
 
     </style>
       <body>
@@ -202,9 +194,18 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
     content: {
       author: req.body.author,
       message: req.body.message,
-      picture: dataURI,
+      picture: dataURI(`./assets/serverImages/${req.file.originalname}`),
     }
-  }).then(() => console.log('The image was created successfully!'))
+  }).then(() => {
+    res.render(__dirname + '/snippet/post-success', {
+      qs: req.body,
+      author: req.body.author,
+      message: req.body.message,
+      image: `./assets/serverImages/${req.file.originalname}`,
+      generatedImage: dataURI("./assets/generatedTemplate/image.jpg")
+    });
+    console.log("done!");
+  })
 });
 
 
