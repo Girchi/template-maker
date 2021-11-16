@@ -37,7 +37,7 @@ app.get("/", upload.single("image"), (req, res) => {
 });
 
 
-app.post("/post", [urlencodedParser, upload.single("image")], async (req, res) => {
+app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
   // create DataURI to read the uploaded image
   const dataURI = (path) => {
     const image = fs.readFileSync(path,);
