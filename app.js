@@ -49,7 +49,7 @@ app.post("/post", [urlencodedParser, upload.single("image")], (req, res) => {
   const FiraGo_Bold_Font = font2base64.encodeToDataUrlSync('./assets/css/fonts/FiraGO-Bold.otf');
   const FiraGo_ExtraBold_Font = font2base64.encodeToDataUrlSync('./assets/css/fonts/FiraGO-ExtraBold.otf');
 
-  await nodeHtmlToImage({
+  nodeHtmlToImage({
     output: './assets/generatedTemplate/image.jpg',
     html: `
     <html>
